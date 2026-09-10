@@ -1,6 +1,6 @@
 [project]
   name            = "devkit-templates"
-  version         = "1.0.0"
+  version         = "1.1.0"
   description     = "The project-configuration templates devkit setup-project renders into every devkit-managed project"
   readme          = "README.md"
   requires-python = ">=3.14"
