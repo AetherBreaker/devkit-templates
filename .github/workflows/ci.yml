@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  render:
+    name: Render (${{ matrix.kind }}, ${{ matrix.devkit }} devkit)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        kind: [python, rust, docker]
+        devkit: [floor, newest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.14"
+
+      # The floor is the compatibility contract: what this tree claims to render under. The
+      # newest devkit catches a feature this tree uses that no release supports yet.
+      - name: Render through the ${{ matrix.devkit }} devkit
+        shell: bash
+        run: |
+          if [ "${{ matrix.devkit }}" = floor ]; then
+            req="$(grep -oE 'aeth-devkit>=[0-9.]+' pyproject.toml | head -1 | sed 's/>=/==/')"
+          else
+            req="aeth-devkit"
+          fi
+          bash ci/render.sh "${{ matrix.kind }}" "$req"
