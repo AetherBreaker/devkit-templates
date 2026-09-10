@@ -27,8 +27,9 @@ this floor alone.
 
 ## Editing
 
-`poe setup-project` in this repository renders its own tree (`[tool.devkit].templates-dir`
-points at it). To render a checkout of this repository into another project, pass
+`poe setup-project` in this repository renders its own tree through
+`[tool.devkit].templates-dir` (aeth-devkit 14.0.0 and later; the setting is added here
+with that release). To render a checkout of this repository into another project, pass
 `--templates-dir <path to python/devkit_templates/templates>` or set `DEVKIT_TEMPLATES`.
 
 CI (`ci/render.sh`) renders the working tree through the declared floor devkit and the

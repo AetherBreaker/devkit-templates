@@ -1,6 +1,7 @@
 # devkit-templates TODO
 
-- [ ] `template.env` writes `PYTHONPYCACHEPREFIX` unquoted; the value has spaces and
-      backslashes, which poe's envfile loader accepts but uv's `--env-file` parser rejects
-      (`Failed to parse environment file .env at position 4`; the rest of the file still
-      loads). Quote the value so both readers agree.
+- [ ] `template.env` double-quotes `PYTHONPYCACHEPREFIX`, and on Windows `{project_root}`
+      renders with backslashes, which uv's `--env-file` parser reads as escapes inside double
+      quotes (`Failed to parse environment file .env at position 4`; the rest of the file
+      still loads) while poe's envfile loader accepts them. Single-quote the value (literal
+      in dotenv), or have the engine render `{project_root}` with forward slashes.

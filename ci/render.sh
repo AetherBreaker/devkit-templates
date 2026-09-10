@@ -18,7 +18,9 @@ mkdir -p "$root/$pkg_dir/scratch_app" && : > "$root/$pkg_dir/scratch_app/__init_
   printf '[dependency-groups]\ndev = ["%s"]\n\n' "$devkit"
   if [ "$kind" = docker ]; then printf '[tool.docker]\nservices = ["scratch-app"]\n\n'; fi
   printf '[tool.uv.sources]\naeth-devkit = [{ index = "SFTPyPI" }]\n\n'
-  printf '[[tool.uv.index]]\nname = "SFTPyPI"\nurl = "https://pypi.sweetfiretobacco.com/jacob.ogden/internal/+simple"\nexplicit = true\n'
+  # publish-url included: the release workflows gate their publish block on it, and that
+  # block carries {publish_index} and {publish_index_key}, which the scan must see rendered.
+  printf '[[tool.uv.index]]\nname = "SFTPyPI"\nurl = "https://pypi.sweetfiretobacco.com/jacob.ogden/internal/+simple"\npublish-url = "https://pypi.sweetfiretobacco.com/jacob.ogden/internal/"\nexplicit = true\n'
 } > "$root/pyproject.toml"
 if [ "$kind" = rust ]; then
   printf '[package]\nname = "scratch-app"\nversion = "0.1.0"\nedition = "2024"\n\n[lib]\npath = "src/lib.rs"\n' > "$root/Cargo.toml"
@@ -26,7 +28,7 @@ if [ "$kind" = rust ]; then
 fi
 
 cd "$root"
-uv sync 2>&1 | tail -1
+uv sync 2>&1 | tail -5
 uv run devkit --version
 # A plain run, not a dry run: files on disk are what the scan reads, and the package step
 # then exercises the 4.0 constraint against the real index. The scratch dir is not a git
