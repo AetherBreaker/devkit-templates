@@ -34,6 +34,9 @@
   [tool.coverage.lcov]
     output = ".cache/coverage.lcov"
 
+[tool.devkit]
+  templates-dir = "python/devkit_templates/templates"
+
 [tool.poe]
   include_script = [{ script = "aeth_devkit:tasks", executor = { type = "uv", frozen = true } }]
 
