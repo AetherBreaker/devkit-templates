@@ -1,4 +1,4 @@
-name: CI
+name: "Verify: render the templates through released devkits"
 
 on:
   push:
@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   render:
-    name: Render (${{ matrix.kind }}, ${{ matrix.devkit }} devkit)
+    name: "Render: ${{ matrix.kind }} project through the ${{ matrix.devkit }} devkit"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -27,7 +27,7 @@ jobs:
 
       # The floor is the compatibility contract: what this tree claims to render under. The
       # newest devkit catches a feature this tree uses that no release supports yet.
-      - name: Render through the ${{ matrix.devkit }} devkit
+      - name: ci/render.sh, a plain setup-project run into a scratch project, then a scan for unresolved placeholders
         shell: bash
         run: |
           if [ "${{ matrix.devkit }}" = floor ]; then
