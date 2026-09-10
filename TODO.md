@@ -5,3 +5,5 @@
       quotes (`Failed to parse environment file .env at position 4`; the rest of the file
       still loads) while poe's envfile loader accepts them. Single-quote the value (literal
       in dotenv), or have the engine render `{project_root}` with forward slashes.
+- [ ] Vendored gitignore refresh: a `poe` task or script that re-fetches
+      `Python.gitignore` / `Rust.gitignore` from GitHub into the templates.
