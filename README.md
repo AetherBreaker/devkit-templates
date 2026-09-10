@@ -2,8 +2,8 @@
 
 The project-configuration templates `devkit setup-project` renders into every
 devkit-managed project: `pyproject.toml`, the VS Code files, `.gitignore`, `.gitattributes`,
-`.dockerignore`, the compose scaffold, the GitHub workflows, `AGENTS.md`, the Claude
-settings and `.mcp.json`. No code: a `devkit_templates` package whose only content is
+`.dockerignore`, `.env`, the compose scaffold, the GitHub workflows, `AGENTS.md`, the
+Claude settings and `.mcp.json`. No code: a `devkit_templates` package whose only content is
 `templates/`.
 
 ## How a change reaches projects
@@ -22,8 +22,8 @@ needs nothing. A change that needs a new feature of that language is an aeth-dev
 first (add the feature, release it), then a commit here that raises the floor and uses
 it. Under `setup-project`'s constraint (`aeth-devkit==<the running devkit>`) a project on
 an older devkit is held at the last release its devkit accepts, with a warning; it never
-renders a template it cannot understand. `poe lock` moves the dev-group pin and leaves
-this floor alone.
+renders a template it cannot understand. `poe lock` (aeth-devkit 14.0.0 and later) moves
+the dev-group pin and leaves this floor alone; an older devkit's `poe lock` would move it.
 
 ## Editing
 
