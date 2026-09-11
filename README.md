@@ -2,8 +2,9 @@
 
 The project-configuration templates `devkit setup-project` renders into every
 devkit-managed project: `pyproject.toml`, the VS Code files, `.gitignore`, `.gitattributes`,
-`.dockerignore`, `.env`, the compose scaffold, the GitHub workflows, `AGENTS.md`, the
-Claude settings and `.mcp.json`. No code: a `devkit_templates` package whose only content is
+`.dockerignore`, `.env`, the GitHub workflows, `AGENTS.md`, the Claude settings and
+`.mcp.json`. The Dockerfile and compose templates ship in devkit-container, beside the
+binary they describe. No code: a `devkit_templates` package whose only content is
 `templates/`.
 
 ## How a change reaches projects
