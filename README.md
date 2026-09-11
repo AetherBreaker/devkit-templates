@@ -15,15 +15,16 @@ release (`poe release`) when a change is meant to reach projects. Nothing else m
 ## The floor
 
 `[project].dependencies` names `aeth-devkit>=X`: the oldest devkit whose template
-language these files use. The placeholders, the `# setup-project:` line gates, the table
-and value markers, the compose service block, the AGENTS.md block and the inventory of
-files and merge shapes are implemented by aeth-devkit's `setup` crate. A content change
-needs nothing. A change that needs a new feature of that language is an aeth-devkit change
-first (add the feature, release it), then a commit here that raises the floor and uses
-it. Under `setup-project`'s constraint (`aeth-devkit==<the running devkit>`) a project on
-an older devkit is held at the last release its devkit accepts, with a warning; it never
-renders a template it cannot understand. `poe lock` (aeth-devkit 14.0.0 and later) moves
-the dev-group pin and leaves this floor alone; an older devkit's `poe lock` would move it.
+language these files use. The placeholders, the `# !` gate language (see aeth-devkit's
+README, **Template language**), the compose service block, the AGENTS.md block and the
+inventory of files and merge shapes are implemented by aeth-devkit's `setup` crate. A
+content change needs nothing. A change that needs a new feature of that language is an
+aeth-devkit change first (add the feature, release it), then a commit here that raises the
+floor and uses it. Under `setup-project`'s constraint (`aeth-devkit==<the running
+devkit>`) a project on an older devkit is held at the last release its devkit accepts, with
+a warning; it never renders a template it cannot understand. `poe lock` (aeth-devkit 14.0.0
+and later) moves the dev-group pin and leaves this floor alone; an older devkit's `poe lock`
+would move it.
 
 ## Editing
 
