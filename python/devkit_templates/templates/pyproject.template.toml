@@ -61,6 +61,15 @@
   # on the mounted filesystem. Ephemeral scratch dirs do not belong here (or under /app at
   # all): use tempfile paths.
   required_persisted_dirs = ["persisted_data"]
+  # The two devkit-container run modes, each added only when missing so a project's own
+  # value stands (a plain template scalar would replace it).
+  # !if keys("tool.docker.supervise") is None:
+  # Spawn and supervise the app instead of exec'ing it.
+  supervise               = false  # !end
+  # !if keys("tool.docker.wireguard") is None:
+  # Bring the tunnel up (the WG_* environment) before the app; implies supervise, and gates
+  # the wireguard parts of the Dockerfile and compose templates.
+  wireguard               = false  # !end
 
 # S!if dep("mypy"):
 [tool.mypy]
