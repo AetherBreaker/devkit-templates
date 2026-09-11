@@ -136,7 +136,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "aeth-devkit", specifier = ">=15.0.0", index = "https://pypi.sweetfiretobacco.com/jacob.ogden/internal/+simple" }]
+requires-dist = [{ name = "aeth-devkit", specifier = ">=15.0.1", index = "https://pypi.sweetfiretobacco.com/jacob.ogden/internal/+simple" }]
 
 [package.metadata.requires-dev]
 dev = [
