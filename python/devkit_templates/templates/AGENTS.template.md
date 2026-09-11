@@ -126,7 +126,7 @@ alone. A name with a colon must be quoted.
 `.env` contains live credentials — never print its contents back in full, commit it, or suggest
 committing it.
 
-<!-- setup-project: if-dep aeth-ext -->
+<!-- S!if dep("aeth-ext"): -->
 ## Pydantic Dataclass Conventions
 
 **All pydantic dataclasses in this project must inherit from `aeth_ext.types.IsPydantic`.**
