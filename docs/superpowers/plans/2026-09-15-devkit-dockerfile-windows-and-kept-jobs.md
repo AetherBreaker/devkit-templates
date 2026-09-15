@@ -1333,7 +1333,7 @@ bash ci/render.sh docker "aeth-devkit==15.1.0"
 
 Expected: both end with `render ok: … through devkit 15.1.0`, and the rendered `.github/workflows/release.yml` in the scratch project starts with the two-line header.
 
-- [ ] **Step 4: Tick, commit, PR, CI, merge**
+- [x] **Step 4: Tick, commit, PR, CI, merge**
 
 ```bash
 cd "/d/SFT Software Projects/SFT Workspace/devkit-templates"
@@ -1359,7 +1359,7 @@ gh pr checks --watch
 
 Expected: every matrix cell green. The owner merges.
 
-- [ ] **Step 5: Release 1.3.0 (owner's go-ahead first)**
+- [x] **Step 5: Release 1.3.0 (owner's go-ahead first)**
 
 ```bash
 cd "/d/SFT Software Projects/SFT Workspace/devkit-templates"
