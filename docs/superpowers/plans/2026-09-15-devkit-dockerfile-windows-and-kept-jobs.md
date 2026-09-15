@@ -1310,7 +1310,7 @@ with
 # except the jobs named in `[tool.devkit].release-workflow-jobs`.
 ```
 
-- [ ] **Step 2: Raise the floor and re-lock**
+- [x] **Step 2: Raise the floor and re-lock**
 
 In `pyproject.toml`, change `dependencies    = ["aeth-devkit>=15.0.1"]` to `dependencies    = ["aeth-devkit>=15.1.0"]` (keep the alignment). Then, with 15.1.0 on the index (Task 5):
 
@@ -1323,7 +1323,7 @@ git diff --stat
 
 Expected: `uv.lock` now resolves `aeth-devkit` at 15.1.0 or newer; nothing else moves.
 
-- [ ] **Step 3: Render locally through the new devkit**
+- [x] **Step 3: Render locally through the new devkit**
 
 ```bash
 cd "/d/SFT Software Projects/SFT Workspace/devkit-templates"
