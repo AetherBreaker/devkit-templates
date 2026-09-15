@@ -1295,7 +1295,7 @@ git push
 **Files:**
 - Modify: `python/devkit_templates/templates/github/workflows/release.template.yml:1`, `release.rust.template.yml:1`, `pyproject.toml` (`[project].dependencies`), `uv.lock`
 
-- [ ] **Step 1: The header in both templates**
+- [x] **Step 1: The header in both templates**
 
 On branch `feat/kept-jobs-header` (Task 0), replace line 1 of both files
 
